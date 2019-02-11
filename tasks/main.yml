@@ -1,2 +1,15 @@
 ---
-# tasks file for ansible-github-hook-relay
+- name: create directory for application
+  become: yes
+  file:
+    path: /opt/github-hook-relay
+    owner: tom
+    group: tom
+    state: directory
+
+- name: install github-hook-relay
+  unarchive:
+    src: "https://github.com/roundpartner/github-hook-relay/releases/download/{{ github_hook_relay_version }}/github-hook-relay.zip"
+    dest: /opt/github-hook-relay
+    remote_src: yes
+...
