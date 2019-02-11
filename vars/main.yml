@@ -2,4 +2,5 @@
 github_hook_relay_version: "v0.2.2"
 relay_jenkins_endpoint: ""
 relay_sqs_queue: ""
+relay_aws_region: "eu-west-1"
 ...
