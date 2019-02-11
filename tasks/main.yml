@@ -21,7 +21,7 @@
 - name: start supervisor
   become: yes
   service:
-    name: supervisor
+    name: supervisord
     state: started
     enabled: yes
 ...
