@@ -18,6 +18,12 @@
     name: supervisor
     state: present
 
+- name: install template
+  become: yes
+  template:
+    src: github-hook-relay.ini
+    dest: /etc/supervisord.d/github-hook-relay.ini
+
 - name: start supervisor
   become: yes
   service:
