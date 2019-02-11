@@ -1,31 +1,27 @@
 ---
 - name: create directory for application
-  become: yes
   file:
     path: /opt/github-hook-relay
     state: directory
 
 - name: install github-hook-relay
-  become: yes
   unarchive:
     src: "https://github.com/roundpartner/github-hook-relay/releases/download/{{ github_hook_relay_version }}/github-hook-relay.zip"
     dest: /opt/github-hook-relay
     remote_src: yes
 
 - name: install supervisor
-  become: yes
   package:
     name: supervisor
     state: present
 
 - name: install template
-  become: yes
   template:
     src: github-hook-relay.ini
     dest: /etc/supervisord.d/github-hook-relay.ini
+  notify: restart supervisor
 
 - name: start supervisor
-  become: yes
   service:
     name: supervisord
     state: started
