@@ -24,6 +24,6 @@
 - name: start supervisor
   service:
     name: supervisord
-    state: started
+    state: "{{ relay_service_state }}"
     enabled: yes
 ...
