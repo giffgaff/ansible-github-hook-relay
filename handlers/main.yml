@@ -3,4 +3,5 @@
   service:
     name: supervisord
     state: restarted
+  when: relay_service_state != "stopped"
 ...
