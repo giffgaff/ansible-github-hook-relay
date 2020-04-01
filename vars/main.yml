@@ -6,4 +6,5 @@ relay_aws_region: "eu-west-1"
 relay_aws_access_key_id: ""
 relay_aws_access_key_secret: ""
 relay_service_state: started
+github_hook_binary_url: ""
 ...
