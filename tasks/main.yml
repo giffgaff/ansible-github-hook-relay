@@ -4,11 +4,19 @@
     path: /opt/github-hook-relay
     state: directory
 
-- name: install github-hook-relay
+- name: install github-hook-relay from releases
   unarchive:
     src: "https://github.com/roundpartner/github-hook-relay/releases/download/{{ github_hook_relay_version }}/github-hook-relay.zip"
     dest: /opt/github-hook-relay
     remote_src: yes
+  when: github_hook_binary_url == ""
+  
+- name: install github-hook-relay from url
+  unarchive:
+    src: "{{ github_hook_binary_url }}"
+    dest: /opt/github-hook-relay
+    remote_src: yes
+  when: github_hook_binary_url != ""
 
 - name: install supervisor
   package:
